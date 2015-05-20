@@ -1,0 +1,20 @@
+body{
+background:#eee;
+}
+
+#painel{
+width:80%;
+margin:0 auto;
+background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 47%,#ededed 100%);
+box-shadow:0 1px 5px grey;
+border-radius:5px;
+}
+
+#cadastro-adicionar{     margin: 5px 20px;
+    position: relative;}
+	
+#remover-produto{
+float:right;
+}
+
+	
