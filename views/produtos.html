@@ -8,7 +8,7 @@
 <head>
 
 <!-- Bootstrap -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="../css/bootstrap.min.css" rel="stylesheet">
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../js/jquery-1.10.2.js"></script>
     <script src="../js/jquery-ui-1.10.4.custom.min.js"></script>
@@ -22,15 +22,15 @@ background:#ddd;
 }
 
 #Painel{
-width:800px;
-height:600px;
-margin:0 auto;
-box-shadow:0 2px 3px #ccc;
-border:1px solid white;
-border-radius:5px;
-padding:30px;
-background:white;
-   display: table;
+	width:800px;
+	height:600px;
+	margin:0 auto;
+	box-shadow:0 2px 3px #ccc;
+	border:1px solid white;
+	border-radius:5px;
+	padding:30px;
+	background:white;
+  	display: table;
 }
 
 form{
@@ -177,19 +177,24 @@ cursor:pointer;
         jQuery.ajax({
             type: "GET",
             url: "http://localhost:8080/",
-            data: {
+            /*data: {
                 "produto.nome": $('#nome').val(),
                 "produto.descricao": $('#descricao').val(),
                 "produto.quantidade": $('#quantidade').val(),
                 "produto.valor": $('#valor').val()
-            },
-            mimeType: "multipart/form-data",
-            dataType: "json",
+            },*/
+            //mimeType: "multipart/form-data",
+            //dataType: "json",
             success: function () {
                 alert("Incluido com sucesso.");
-                $("input[type=text]").val("");
-                consultar();
-            }
+                /*$("input[type=text]").val("");
+                consultar();*/
+            },
+			error: function(err){
+				if(err)
+					alert(err.responseText);
+				alert('Error!');
+			}
         });
         
 
@@ -268,4 +273,3 @@ cursor:pointer;
 	
 
 </body>
-
