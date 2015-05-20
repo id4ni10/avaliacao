@@ -17,9 +17,13 @@ MongoClient.connect('mongodb://localhost:27017/avaliacao', function(err, db) {
 	});
     
     app.get('/pedidos', function(req, res){
-        return res.render('produtos', { "error" : " Página não encontrada!" });
+        return res.render('produtos');
     });
 
+	app.get('*', function(req, res){
+        return res.render('notfound', { "error" : " Página não encontrada!" });
+    });
+	
     app.listen(8080);
     console.log('Express server started on port 8080');
 	
