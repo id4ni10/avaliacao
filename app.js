@@ -24,6 +24,26 @@ MongoClient.connect('mongodb://localhost:27017/avaliacao', function(err, db) {
         return res.render('notfound', { "error" : " Página não encontrada!" });
     });
 	
+	app.post('/pedidos', function(req, res){
+		MongoClient.connect('mongodb://localhost:27017/avaliacao', function(err, db) {
+			if(err) throw err;
+
+			db.collection('pedidos').insert(
+				{ nome:"Aquiles", email:"aquiles@gmail.com", endereco:"rua mizerê" ,
+					pecas:[
+						{id:"10923812371", quantidade:2 ,valor_unitário:100.20 },
+						{id:"38327492342", quantidade:3 ,valor_unitário:123.20 } ],
+					total:223.40
+				}
+			);
+			return db.close();
+		});
+	});
+
+	app.put('/pedidos', function(req, res){
+
+	});
+
     app.listen(8080);
     console.log('Express server started on port 8080');
 	
