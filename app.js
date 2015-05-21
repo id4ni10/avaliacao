@@ -44,6 +44,10 @@ MongoClient.connect('mongodb://localhost:27017/avaliacao', function(err, db) {
 
 	});
 
+	app.delete('/pedidos', function(req, res){
+
+	});
+
     app.listen(8080);
     console.log('Express server started on port 8080');
 	
