@@ -34,9 +34,10 @@ var express = require('express'),
 						{ id:"10923812371", quantidade:2 ,valor_unitário:100.20 },
 						{ id:"38327492342", quantidade:3 ,valor_unitário:123.20 } ],
 					total:223.40
-				}
-			);
-			return db.close();
+				});
+		db.close();
+
+		return res.render('produtos');
 		});
 	});
 
