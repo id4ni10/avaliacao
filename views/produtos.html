@@ -175,8 +175,8 @@ cursor:pointer;
     function incluir(){
         
         jQuery.ajax({
-            type: "GET",
-            url: "http://localhost:8080/",
+            type: "POST",
+            url: "http://localhost:8080/pedidos",
             /*data: {
                 "produto.nome": $('#nome').val(),
                 "produto.descricao": $('#descricao').val(),
