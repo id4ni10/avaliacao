@@ -17,6 +17,13 @@ router.get('/form', function(req, res) {
     }); 
 });
 
+router.get('/form/:id', function(req, res) {
+    var id = req.params.id;
+    Peca.findOne({_id: id},function(erro, resultado) {
+        res.render('pecas/form', {peca: resultado, title: 'Alteração'});
+    });
+});
+
 router.post('/save', function(req, res) {
     if(req.body._id){ 
         Peca.findOne({_id: req.body._id}, function(erro, resultado) {
@@ -35,9 +42,9 @@ router.post('/save', function(req, res) {
     { 
         var peca = new Peca({ 
             nome:req.body.nome, 
-            descrição:req.body.descricao, 
+            descricao:req.body.descricao,
             fabricante:req.body.fabricante,
-            valor_unitário:req.body.valor_unitario
+            valor_unitario:req.body.valor_unitario
         });
         
         peca.save(function() {
