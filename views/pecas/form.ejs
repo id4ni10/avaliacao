@@ -1,0 +1,17 @@
+<!DOCTYPE html> 
+    <html>  
+        <head>
+            <title><%= title %></title>
+            <link rel='stylesheet' href='/stylesheets/style.css' />  
+            </head>  
+        <body>    
+            <form action="/pecas/save" method="post"> 
+                <input type="hidden" name="_id" value="<%= peca._id %>"> 
+                nome: <input type="text" name="nome" value="<%= peca.nome %>"></br>
+                descricao: <input type="text" name="descricao" value="<%= peca.descricao %>"></br> 
+                fabricante: <input type="text" name="fabricante" value="<%= peca.fabricante %>"></br> 
+                valor unitário: <input type="text" name="valor_unitario" value="<%= peca.valor_unitário %>"></br> 
+                <input type="submit" value="Salvar"> 
+            </form>
+    </body>
+</html>

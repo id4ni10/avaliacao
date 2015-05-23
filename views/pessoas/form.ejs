@@ -1,0 +1,15 @@
+<!DOCTYPE html> 
+    <html>  
+        <head>
+            <title><%= title %></title>
+            <link rel='stylesheet' href='/stylesheets/style.css' />  
+            </head>  
+        <body>    
+            <form action="/pessoas/save" method="post"> 
+                <input type="hidden" name="_id" value="<%= pessoa._id %>"> 
+                Nome: <input type="text" name="nome" value="<%= pessoa.nome %>"></br>   
+                Email: <input type="text" name="email" value="<%= pessoa.email %>"></br> 
+                <input type="submit" value="Salvar"> 
+            </form>
+    </body>
+</html>

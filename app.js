@@ -1,50 +1,63 @@
-var express = require('express'),
-    app = express(),
-    cons = require('consolidate'),
-	path = require('path'),
-    MongoClient = require('mongodb').MongoClient;
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
-	app.engine('html', cons.swig);
-	app.set('view engine', 'html');
-	app.set('views', __dirname + '/views');
-	app.use(express.static(path.join(__dirname, 'public')));
+var routes = require('./routes/index');
+var users = require('./routes/users');
 
-	app.listen(8080);
-    console.log('Express server started on port 8080');
+var pecas = require('./routes/pecas');
 
-	app.get('/', function(req, res){
-            return res.render('hello', { "name" : 'Aquiles' });
-	});
+var app = express();
 
-	app.get('/pedidos', function(req, res){
-        return res.render('produtos');
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+app.use('/users', users);
+app.use('/pecas', pecas);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
+}
 
-	app.get('*', function(req, res){
-        return res.render('notfound', { "error" : " Página não encontrada!" });
-    });
-	
-	app.post('/pedidos', function(req, res){
-		MongoClient.connect('mongodb://localhost:27017/avaliacao', function(err, db) {
-			if(err) throw err;
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
 
-			db.collection('pedidos').insert(
-				{ nome:"Aquiles", email:"aquiles@gmail.com", endereco:"rua mizerê" ,
-					pecas:[
-						{ id:"10923812371", quantidade:2 ,valor_unitário:100.20 },
-						{ id:"38327492342", quantidade:3 ,valor_unitário:123.20 } ],
-					total:223.40
-				});
-		db.close();
 
-		return res.render('produtos');
-		});
-	});
-
-	app.put('/pedidos', function(req, res){
-
-	});
-
-	app.delete('/pedidos', function(req, res){
-
-	});
+module.exports = app;
