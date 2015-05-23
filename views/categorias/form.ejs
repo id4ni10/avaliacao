@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title><%= title %></title>
+            <link rel='stylesheet' href='/stylesheets/style.css' />
+            </head>
+        <body>
+            <form action="/categorias/save" method="post">
+                <input type="hidden" name="_id" value="<%= categoria._id %>">
+                nome: <input type="text" name="nome" value="<%= categoria.nome %>"></br>
+                <input type="submit" value="Salvar">
+            </form>
+    </body>
+</html>

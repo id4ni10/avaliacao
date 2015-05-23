@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <ul>
+            <% categorias.forEach(function(c) { %>
+            <li>
+                <a href="/categorias/form/<%- c._id %>"><%- c.nome %></a> (<a href="/categorias/del/<%- c._id %>">Excluir</a>)
+            </li>
+            <% }) %>
+        </ul>
+        </br>
+    <a href="/categorias/form">Nova Categoria</a>
+    </body>
+</html>
