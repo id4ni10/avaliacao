@@ -3,7 +3,7 @@ var db = require('../lib/db_connect')();
 var Schema = require('mongoose').Schema; var pecaSchema = Schema({ 
     
     nome: String, 
-    descrição: String, 
+    descricao: String,
     fabricante: String,
     valor_unitario: Number
 
