@@ -10,6 +10,10 @@ var categorias = require('./routes/categorias');
 var pecas = require('./routes/pecas');
 var pedidos = require('./routes/pedidos');
 
+var pedidosapi = require('./routes/pedidosapi');
+var pecasapi = require('./routes/pecasapi');
+var categoriasapi = require('./routes/categoriasapi');
+
 var app = express();
 
 // view engine setup
@@ -28,6 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/categorias', categorias);
 app.use('/pecas', pecas);
 app.use('/pedidos', pedidos);
+
+app.use('/pedidos/api', pedidosapi);
+app.use('/pecas/api', pecasapi);
+app.use('/categorias/api', categoriasapi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
