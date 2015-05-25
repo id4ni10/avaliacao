@@ -1,16 +1,58 @@
 <!DOCTYPE html>
     <html>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <head>
             <title><%= title %></title>
             <link rel='stylesheet' href='/stylesheets/style.css' />
+            <link rel='stylesheet' href="/stylesheet/bootstrap.min.css" />
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="/javascripts/jquery-1.10.2.js"></script>
+            <script src="/javascripts/jquery-ui-1.10.4.custom.min.js"></script>
+            <script src="/javascripts/bootstrap.js"></script>
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <script src="/javascripts/bootstrap.min.js"></script>
+            <script src="/javascripts/pecas.js"></script>
             </head>
         <body>
             <form action="/pedidos/save" method="post">
                 <input type="hidden" name="_id" value="<%= pedido._id %>">
                 nome: <input type="text" name="nome" value="<%= pedido.nome %>"></br>
-                <!--descricao: <input type="text" name="descricao" value="<%= pedido.descricao %>"></br>
-                fabricante: <input type="text" name="fabricante" value="<%= pedido.fabricante %>"></br>
-                valor unitário: <input type="text" name="valor_unitario" value="<%= pedido.valor_unitario %>"></br>-->
+                email: <input type="text" name="email" value="<%= pedido.email %>"></br>
+                endereço: <input type="text" name="endereco" value="<%= pedido.endereco %>"></br>
+
+                   <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Peças</h3>
+                  </div>
+                  <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading"></div>
+                    <!-- Table -->
+                    <table class="table" id="listagem-produtos">
+                      <thead>
+                        <tr>
+                          <th>Nome</th>
+                          <th>Valor</th>
+                          <th>Qtd</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <br/>
+                <div class="control-group">
+                  <label class="control-label" for="cadastro-adicionar"></label>
+                  <div class="controls">
+                    <input id="cadastro-adicionar" onclick="" type="button"></input>
+                  </div>
+                </div>
+                total: <input type="text" name="total" value="<%= pedido.total %>"></br>
+
                 <input type="submit" value="Salvar">
             </form>
     </body>

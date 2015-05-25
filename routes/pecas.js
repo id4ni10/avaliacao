@@ -71,4 +71,11 @@ router.get('/del/:id', function(req, res, next) {
 
 router.get('/json', function(req, res, next) { Peca.find(function(erro, pecas) { res.json(pecas);  }); });
 
+router.get('/json/:id', function(req, res, next) {
+    var id = req.params.id;
+    Peca.findOne({_id: id},function(erro, pecas) {
+        res.json(pecas);
+    });
+});
+
 module.exports = router;
