@@ -103,19 +103,17 @@ function listarPedidos() {
 function incluir() {
 
     var pedido = {
-                   'pedido.cpf': $("#cadastro-cpf").val(),
-                   'pedido.solicitante': $("#cadastro-nome").val(),
+                   'pedido.nome': $("#cadastro-nome").val(),
                    'pedido.endereco': $("#cadastro-endereco").val(),
-                   'pedido.data_pedido': $("#cadastro-data").datepicker( "getDate" )
+                   'pedido.email': $("#cadastro-email").val()
                  };
-
 
     var selects = $( "select[id*='select-id-'] option:selected" );
    $.each(selects, function(key,val){
-       var idItem = val.id;
+       var idItem = val._id;
        var quantidadeItem = $("input[id^=adicionar-quantidade-")[key].value;
 
-       pedido['pedido.produto.id['+key+']'] = idItem;
+       pedido['pedido.pecas._id['+key+']'] = idItem;
        pedido['pedido.produto.quantidade['+ key +']']= quantidadeItem;
    });
 

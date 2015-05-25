@@ -35,12 +35,19 @@
                         <tr>
                             <th>Nome</th>
                             <th>Valor</th>
-                            <th>Qtd</th>
+                            <th>Quantidade</th>
                             <th>Total</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
+                <!-- Button -->
+                <div class="control-group">
+                    <label class="control-label" for="cadastro-adicionar"></label>
+                    <div class="controls">
+                        <input id="cadastro-adicionar" onclick="" value="+" type="button"></input>
+                    </div>
+                </div>
             </div>
         </div>
         <br />
@@ -51,14 +58,7 @@
                 <input type="text" id="pedido-total" name="pedido-total" placeholder="Total" disabled class="input-medium">
             </div>
         </div>
-        <!-- Button -->
-        <div class="control-group">
-            <label class="control-label" for="cadastro-adicionar"></label>
-            <div class="controls">
-                <input id="cadastro-adicionar" onclick="" type="button"></input>
-            </div>
-        </div>
-        <input type="submit" value="Salvar">
+        <input id="cadastro-salvar" type="button" value="Salvar">
     </form>
 </body>
 </html>
