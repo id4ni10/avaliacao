@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <ul>
+            <% pedidos.forEach(function(c) { %>
+            <li>
+                <a href="/pedidos/form/<%- c._id %>"><%- c._id %></a> (<a href="/pedidos/del/<%- c._id %>">Excluir</a>)
+            </li>
+            <% }) %>
+        </ul>
+        </br>
+    <a href="/pedidos/form">Novo Pedido</a>
+    </body>
+</html>
