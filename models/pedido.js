@@ -7,7 +7,8 @@ var pedidoSchema = Schema({
     nome: String,
     email: String,
     endereco: String,
-    pecas: [ { _id: Number, quantidade: Number , valor_unitario: Number } ]
+    pecas: [ { _id: Number, quantidade: Number , valor_unitario: Number } ],
+    total: Number
 
 });
 
