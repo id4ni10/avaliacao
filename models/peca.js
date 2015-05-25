@@ -5,7 +5,8 @@ var Schema = require('mongoose').Schema; var pecaSchema = Schema({
     nome: String, 
     descricao: String,
     fabricante: String,
-    valor_unitario: Number
+    valor_unitario: Number,
+    categoria: Schema.Types.ObjectId
 
 }); 
 
