@@ -1,19 +1,27 @@
 <h2> {{title}} </h2>
 <div ng-init="loadForm()">
     <form name="myForm">
-        <input type="hidden" ng-model="pessoa._id" name="_id">
+        <input type="hidden" ng-model="peca._id" name="_id"> Nome:
+        <input type="text" ng-model="peca.nome" name="nome" required>
+        </br>
 
-        Nome: <input type="text" ng-model="peca.nome" name="nome"
-        required></br>
+        Descrição:
+        <input type="text" ng-model="peca.descricao" name="descricao" required>
+        </br>
 
-        Descrição: <input type="text" ng-model="peca.descricao" name="descricao"
-        required></br>
+        Fabricante:
+        <input type="text" ng-model="peca.fabricante" name="fabricante" required>
+        </br>
 
-        Fabricante: <input type="text" ng-model="peca.fabricante" name="fabricante"
-        required></br>
-
-        Valor Unitário: <input type="text" ng-model="peca.valor_unitario" name="valor_unitario"
-        required></br>
+        Valor Unitário:
+        <input type="text" ng-model="peca.valor_unitario" name="valor_unitario" required>
+        </br>
+        <select name="categoria" ng-model="peca.categoria">
+            <option ng-repeat="c in categorias" value="{{c._id}}">
+                {{c.nome}}
+            </option>
+        </select>
+        <br />
         </br>
         <button ng-click="save()" ng-disabled="myForm.$invalid">Salvar</button><a href="#/">Cancelar</a>
     </form>

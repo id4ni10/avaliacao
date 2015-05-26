@@ -1,6 +1,6 @@
 <h2>Peças encontradas: {{pecas.length}}</h2>
 <div ng-init="loadAll()">
     <ul>
-        <li ng-repeat="p in pecas"> <a href="#/edit/{{p._id}}">{{p.nome}}</a> (<a ng-click="del(p._id)" href="/">Excluir</a>) </li>
+        <li ng-repeat="p in pecas"> <a href="#/edit/{{p._id}}">{{p.nome}}</a> (<a ng-click="del(p._id)" href="#">Excluir</a>) </li>
     </ul> <a href="#/new">Novo</a>
 </div>

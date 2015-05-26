@@ -5,7 +5,7 @@ Grupo: Aquiles Oliveira, Aziz Sault e Danilo Nascimento
 
 Metadados Banco:avaliacao
 
-	peças {nome:"Nobreak", descrição:"Fonte de energia", fabricante:"Itautec", valor_unitário:100.20}
+	peças {nome:"Nobreak", descrição:"Fonte de energia", fabricante:"Itautec", valor_unitário:100.20, categoria:"172638..."}
 	
     categoria { nome:"Periférico" }
 	

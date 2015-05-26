@@ -28,7 +28,7 @@ app.controller('pecasController', function ($scope, $http, $location, $routePara
         }
     }
 
-    $scope.del = function(id) {
+    $scope.del = function (id) {
 
         $http.delete("http://localhost:3000/api/pecas/" + id).success(function (data) {
             $location.path('/');
@@ -43,12 +43,22 @@ app.controller('pecasController', function ($scope, $http, $location, $routePara
             $scope.id = $routeParams.id;
             $http.get("http://localhost:3000/api/pecas/" + $scope.id).success(function (data) {
                 $scope.peca = data;
+                $http.get("http://localhost:3000/api/categorias/").success(function (categorias) {
+                    $scope.categorias = categorias;
+                }).error(function (categorias) {
+                    alert("Error...");
+                });
             }).error(function (data) {
                 alert("Error...");
             });
         } else {
             $scope.title = "Cadastrar Peças";
-            $scope.pessoa = {};
+            $scope.peca = {};
+            $http.get("http://localhost:3000/api/categorias/").success(function (categorias) {
+                $scope.categorias = categorias;
+            }).error(function (categorias) {
+                alert("Error...");
+            });
         }
     }
 });
