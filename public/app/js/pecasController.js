@@ -11,12 +11,21 @@ app.controller('pecasController', function ($scope, $http, $location, $routePara
     }
 
     $scope.save = function () {
-        $http.post("http://localhost:3000/api/pecas",
-            $scope.peca).success(function (data) {
-            $location.path('/');
-        }).error(function (data) {
-            alert("Error...");
-        });
+        if ($routeParams.id) {
+            $scope.id = $routeParams.id;
+            $http.put("http://localhost:3000/api/pecas/" + $scope.id, $scope.peca).success(function (data) {
+                $location.path('/');
+            }).error(function (data) {
+                alert("Error...");
+            });
+        } else {
+            $http.post("http://localhost:3000/api/pecas",
+                $scope.peca).success(function (data) {
+                $location.path('/');
+            }).error(function (data) {
+                alert("Error...");
+            });
+        }
     }
 
     $scope.del = function (id) {
@@ -32,7 +41,7 @@ app.controller('pecasController', function ($scope, $http, $location, $routePara
             $scope.title = "Editar Peças";
             $scope.id = $routeParams.id;
             $http.get("http://localhost:3000/api/pecas/" + $scope.id).success(function (data) {
-                $scope.pessoa = data;
+                $scope.peca = data;
             }).error(function (data) {
                 alert("Error...");
             });

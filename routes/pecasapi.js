@@ -31,7 +31,7 @@ router.post('/', function(req, res) {
     });
 });
 
-router.put('/', function(req, res) {
+router.put('/:id', function(req, res) {
 
     Peca.findOne({_id: req.body._id}, function(erro, resultado) {
 
