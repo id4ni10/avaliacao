@@ -15,6 +15,6 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 app.run(['$rootScope', function ($rootScope) {
-    $rootScope.info = "CRUD de Peça"
+    $rootScope.info = "CRUD de Peça";
     console.log('app.run');
 }]);

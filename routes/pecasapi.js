@@ -48,10 +48,9 @@ router.put('/:id', function(req, res) {
 });
 
 router.delete('/:id', function(req, res, next) {
-    var id = req.body._id;
+    var id = req.params.id;
     Peca.findOne({_id: id},function(erro, resultado) {
         resultado.remove();
-        res.json(resultado);
     });
 });
 

@@ -28,8 +28,8 @@ app.controller('pecasController', function ($scope, $http, $location, $routePara
         }
     }
 
-    $scope.del = function (id) {
-        console.log(id);
+    $scope.del = function(id) {
+
         $http.delete("http://localhost:3000/api/pecas/" + id).success(function (data) {
             $location.path('/');
         }).error(function (data) {
