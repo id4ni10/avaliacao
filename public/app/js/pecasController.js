@@ -1,5 +1,3 @@
-var app = angular.module('app', []);
-
 app.controller('pecasController', function ($scope, $http, $location, $routeParams) {
 
     $scope.loadAll = function () {
