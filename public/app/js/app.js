@@ -15,7 +15,7 @@ app.config(['$routeProvider', function ($routeProvider) {
             redirectTo: '/'
         });*/
 
-    $routeProvider
+    /*$routeProvider
         .when('/', {
             controller: 'categoriasController',
             templateUrl: 'view/categorias/list.html'
@@ -27,11 +27,26 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'view/categorias/form.html'
         }).otherwise({
             redirectTo: '/'
+        });*/
+
+    $routeProvider
+        .when('/', {
+            controller: 'pedidosController',
+            templateUrl: 'view/pedidos/list.html'
+        }).when('/edit/:id', {
+            controller: 'pedidosController',
+            templateUrl: 'view/pedidos/form.html'
+        }).when('/new', {
+            controller: 'pedidosController',
+            templateUrl: 'view/pedidos/form.html'
+        }).otherwise({
+            redirectTo: '/'
         });
 }]);
 
 app.run(['$rootScope', function ($rootScope) {
     //$rootScope.info = "CRUD de Peça";
-    $rootScope.info = "CRUD de Categoria";
+    //$rootScope.info = "CRUD de Categoria";
+    $rootScope.info = "CRUD de Pedido";
     console.log('app.run');
 }]);

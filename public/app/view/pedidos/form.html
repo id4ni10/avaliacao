@@ -1,0 +1,54 @@
+<h2> {{title}} </h2>
+<div ng-init="loadForm()">
+    <form name="myForm">
+        <input type="hidden" ng-model="pedido._id" name="_id"> Nome:
+        <input type="text" ng-model="pedido.nome" name="nome" required>
+        </br>
+
+        Endereço:
+        <input type="text" ng-model="pedido.endereco" name="endereco" required>
+        </br>
+
+        Email:
+        <input type="text" ng-model="pedido.email" name="email" required>
+        </br>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Peças</h3>
+            </div>
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"></div>
+                <!-- Table -->
+                <table class="table" id="listagem-produtos">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Valor</th>
+                            <th>Quantidade</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <!-- Button -->
+                <div class="control-group">
+                    <label class="control-label" for="cadastro-adicionar"></label>
+                    <div class="controls">
+                        <input id="cadastro-adicionar" onclick="" value="+" type="button"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <!-- Text input-->
+        <div class="control-group">
+            <label class="control-label" for="pedido-total">Total</label>
+            <div class="controls">
+                <input type="text" ng-model="pedido.total" id="pedido-total" name="pedido-total" placeholder="Total" disabled class="input-medium" required>
+            </div>
+        </div>
+        </br>
+        <button ng-click="save()" ng-disabled="myForm.$invalid">Salvar</button><a href="#/">Cancelar</a>
+    </form>
+</div>
