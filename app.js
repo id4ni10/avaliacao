@@ -11,7 +11,7 @@ var pecas = require('./routes/pecas');
 var pedidos = require('./routes/pedidos');
 
 var pedidosapi = require('./routes/pedidosapi');
-var pecasapi = require('./routes/pecasapi');
+var pecasapi = require('./routes/pecasController');
 var categoriasapi = require('./routes/categoriasapi');
 
 var app = express();
