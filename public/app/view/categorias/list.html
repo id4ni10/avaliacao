@@ -1,0 +1,9 @@
+<h2>Categorias encontradas: {{categorias.length}}</h2>
+<div ng-init="loadAll()">
+    <ul>
+        <li ng-repeat="c in categorias">
+            <a href="#/edit/{{c._id}}">{{c.nome}}</a> (<a ng-click="del(c._id)" href="#">Excluir</a>)
+        </li>
+    </ul>
+    <a href="#/new">Novo</a>
+</div>

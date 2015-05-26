@@ -1,0 +1,10 @@
+<h2> {{title}} </h2>
+<div ng-init="loadForm()">
+    <form name="myForm">
+        <input type="hidden" ng-model="categoria._id" name="_id"> Nome:
+        <input type="text" ng-model="categoria.nome" name="nome" required>
+        </br>
+
+        <button ng-click="save()" ng-disabled="myForm.$invalid">Salvar</button><a href="#/">Cancelar</a>
+    </form>
+</div>
