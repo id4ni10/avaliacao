@@ -1,6 +1,30 @@
 <h2>Pedidos encontrados: {{pedidos.length}}</h2>
 <div ng-init="loadAll()">
-    <ul>
-        <li ng-repeat="p in pedidos"> <a href="#/edit/{{p._id}}">{{p.nome}}</a> (<a ng-click="del(p._id)" href="#">Excluir</a>) </li>
-    </ul> <a href="#/new">Novo</a>
+
+<div class="control-group">
+    <label class="control-label" for="listagem-novo"></label>
+    <div class="controls">
+        <a href="#/new"><button id="listagem-novo" name="listagem-novo" class="btn btn-success">Adicionar Novo Pedido</button></a>
+    </div>
+</div>
+
+<table id="listagem-tabela" class="table">
+    <thead>
+        <tr>
+            <th>Pedido</th>
+            <th>Nome</th>
+            <th>Total</th>
+            <th>Excluir</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="p in pedidos">
+        <th class="listagem-id"><a href="#/edit/{{p._id}}">{{p._id}}</a></th>
+    <th class="listagem-id">{{p.nome}}</th>
+            <th class="listagem-id">{{p.total}}</th>
+            <th><a ng-click="del(p._id)" href="#"><span class="btn btn-danger  glyphicon glyphicon-remove"></span></a></th>
+        </tr>
+    </tbody>
+</table>
+
 </div>

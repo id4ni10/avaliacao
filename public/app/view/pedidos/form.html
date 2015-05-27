@@ -1,24 +1,44 @@
-<h2> {{title}} </h2>
+<section>
+
+</div><h2> {{title}} </h2>
 <div ng-init="loadForm()">
-    <form name="myForm" id="frm">
-        <input type="hidden" ng-model="pedido._id" name="_id"> Nome:
-        <input type="text" id="cadastro-nome" ng-model="pedido.nome" name="nome" required>
-        </br>
+    <form class="form-horizontal" name="myForm" id="frm">
+        <input type="hidden" ng-model="pedido._id" name="_id">
 
-        Endereço:
-        <input type="text" id="cadastro-endereco" ng-model="pedido.endereco" name="endereco" required>
-        </br>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="nome">Nome</label>
+            <div class="col-md-4">
+                <input id="cadastro-nome" name="nome" ng-model="pedido.nome" type="text" placeholder="" class="form-control input-md" required="">
 
-        Email:
-        <input type="text" id="cadastro-email" ng-model="pedido.email" name="email" required>
-        </br>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Peças</h3>
             </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="endereco">Endereço</label>
+            <div class="col-md-4">
+                <input id="cadastro-endereco" name="endereco" ng-model="pedido.endereco" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">E-mail</label>
+            <div class="col-md-4">
+                <input id="cadastro-email" name="email" ng-model="pedido.email" type="text" placeholder="" class="form-control input-md" required="">
+
+            </div>
+        </div>
+
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading"></div>
+                <div class="panel-heading">
+                    <div class="page-header">
+                        <h1>Peças</h1>
+                    </div>
+                </div>
                 <!-- Table -->
                 <table class="table" id="listagem-produtos">
                     <thead>
@@ -34,22 +54,39 @@
                 </table>
                 <!-- Button -->
                 <div class="control-group">
-                    <label class="control-label" for="cadastro-adicionar"></label>
                     <div class="controls">
-                        <input id="cadastro-adicionar" onclick="addLine()" value="+" type="button"></input>
+                        <label class="control-label" for="cadastro-adicionar"></label>
+                        <button id="cadastro-adicionar" onclick="addLine()" type="button" class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar peça</button>
+
                     </div>
                 </div>
+
+
+
+                </br>
             </div>
-        </div>
-        <br />
+
         <!-- Text input-->
-        <div class="control-group">
-            <label class="control-label" for="pedido-total">Total</label>
-            <div class="controls">
-                <input type="text" ng-model="pedido.total" id="pedido-total" name="total" placeholder="Total" disabled class="input-medium" />
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="endereco">Total</label>
+            <div class="col-md-4">
+                <input type="text" ng-model="pedido.total" id="pedido-total" name="total" placeholder="Total" disabled class="form-control input-md">
+
             </div>
         </div>
-        </br>
+
     </form>
-    <button onclick="incluir()" ng-disabled="myForm.$invalid">Salvar</button><a href="#/">Cancelar</a>
+    <!-- Button (Double) -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="salvar"></label>
+        <div class="col-md-8">
+            <button id="salvar" name="salvar" class="btn btn-primary" onclick="incluir()" ng-disabled="myForm.$invalid">Salvar</button>
+            <a href="#/">
+                <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
+            </a>
+        </div>
+    </div>
+
 </div>
+</section>

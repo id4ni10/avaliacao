@@ -142,6 +142,7 @@ function incluir() {
             //listarPedidos();
             limparFormulario();
             alert("Pedido cadastrado com sucesso.");
+            location.reload();
         },
         error: function () {
             alert('Erro...');
@@ -267,14 +268,14 @@ function adicionarProduto(data) {
 
     //adicionando a descrição, valor, quantidade e total, cada coluna separada por um ENTER
     linha += "<td><div class='form-group'>" +
-        "<textarea id='adicionar-descricao-" + idLinha + "' disabled class='form-control'></textarea></div></td>" +
+        "<input type='text' id='adicionar-descricao-" + idLinha + "' disabled class='form-control'></div></td>" +
 
         "<td><div class='form-group'>" +
         "<input type='text' ng-model='pedido.pecas.valor_unitario' id='adicionar-valor-" + idLinha + "' placeholder='Valor' disabled class='form-control'></div></td>" +
 
 
         "<td><div class='form-group'>" +
-        "<input type='number' ng-model='pedido.pecas.quantidade' name='pedido.pecas.quantidade' required id='adicionar-quantidade-" + idLinha + "' placeholder='Quantidade' class='form-control' onchange='onChangeQuantidade(" + idLinha + ");' min='1'></div></td>" +
+        "<input type='number' ng-model='pedido.pecas.quantidade' name='pedido.pecas.quantidade' required id='adicionar-quantidade-" + idLinha + "' placeholder='Quantidade' value='1' class='form-control' onchange='onChangeQuantidade(" + idLinha + ");' min='1'></div></td>" +
 
         "<td><div class='form-group'>" +
         "<input type='text' id='adicionar-total-" + idLinha + "' placeholder='Total' disabled class='form-control'></div></td>" +
@@ -285,6 +286,7 @@ function adicionarProduto(data) {
     //Não somo a linha, pois a primeira linha é a linha 0, nesse método onchange é que será adicionado os valores nos campos de descrição e valor.
     onChangeProduto(idLinha);
     //agora sim, adiciono a linha
+    //calcularLinha(idLinha);
     idLinha++;
 
     //});
