@@ -23,6 +23,7 @@
                 <table class="table" id="listagem-produtos">
                     <thead>
                         <tr>
+                            <th>Peça</th>
                             <th>Nome</th>
                             <th>Valor</th>
                             <th>Quantidade</th>
@@ -35,7 +36,7 @@
                 <div class="control-group">
                     <label class="control-label" for="cadastro-adicionar"></label>
                     <div class="controls">
-                        <input id="cadastro-adicionar" onclick="" value="+" type="button"></input>
+                        <input id="cadastro-adicionar" onclick="addLine()" value="+" type="button"></input>
                     </div>
                 </div>
             </div>
@@ -45,7 +46,7 @@
         <div class="control-group">
             <label class="control-label" for="pedido-total">Total</label>
             <div class="controls">
-                <input type="text" ng-model="pedido.total" id="pedido-total" name="pedido-total" placeholder="Total" disabled class="input-medium" required>
+                <input type="text" ng-model="pedido.total" id="pedido-total" name="total" placeholder="Total" required class="input-medium" />
             </div>
         </div>
         </br>

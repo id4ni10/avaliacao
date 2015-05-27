@@ -3,37 +3,41 @@ var router = express.Router();
 
 var Peca = require('../models/peca');
 
-router.get('/', function(req, res, next) {
-    Peca.find(function(erro, pecas) {
+router.get('/', function (req, res, next) {
+    Peca.find(function (erro, pecas) {
         res.json(pecas);
     });
 });
 
-router.get('/:id', function(req, res) {
+router.get('/:id', function (req, res) {
     var id = req.params.id;
-    Peca.findOne({_id: id},function(erro, resultado) {
+    Peca.findOne({
+        _id: id
+    }, function (erro, resultado) {
         res.json(resultado);
     });
 });
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
 
     var peca = new Peca({
-        nome:req.body.nome,
-        descricao:req.body.descricao,
-        fabricante:req.body.fabricante,
-        valor_unitario:req.body.valor_unitario,
-        categoria:req.body.categoria
+        nome: req.body.nome,
+        descricao: req.body.descricao,
+        fabricante: req.body.fabricante,
+        valor_unitario: req.body.valor_unitario,
+        categoria: req.body.categoria
     });
 
-    peca.save(function() {
+    peca.save(function () {
         res.json(peca);
     });
 });
 
-router.put('/:id', function(req, res) {
+router.put('/:id', function (req, res) {
 
-    Peca.findOne({_id: req.body._id}, function(erro, resultado) {
+    Peca.findOne({
+        _id: req.body._id
+    }, function (erro, resultado) {
 
         resultado.nome = req.body.nome;
         resultado.descricao = req.body.descricao;
@@ -41,15 +45,17 @@ router.put('/:id', function(req, res) {
         resultado.valor_unitario = req.body.valor_unitario;
         resultado.categoria = req.body.categoria;
 
-        resultado.save(function() {
+        resultado.save(function () {
             res.json(resultado);
         });
     });
 });
 
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', function (req, res, next) {
     var id = req.params.id;
-    Peca.findOne({_id: id},function(erro, resultado) {
+    Peca.findOne({
+        _id: id
+    }, function (erro, resultado) {
         resultado.remove();
     });
 });
