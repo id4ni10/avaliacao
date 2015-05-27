@@ -107,10 +107,11 @@ function listarPedidos() {
 function incluir() {
 
     var pedido = {
-        'pedido.cpf': $("#cadastro-cpf").val(),
-        'pedido.solicitante': $("#cadastro-nome").val(),
-        'pedido.endereco': $("#cadastro-endereco").val(),
-        'pedido.data_pedido': $("#cadastro-data").datepicker("getDate")
+        'nome': $("#cadastro-nome").val(),
+        'email': $("#cadastro-email").val(),
+        'endereco': $("#cadastro-endereco").val(),
+        'pecas': [],
+        'total': $("#pedido-total").val()
     };
 
 
@@ -118,33 +119,32 @@ function incluir() {
     $.each(selects, function (key, val) {
         var idItem = val.id;
         var quantidadeItem = $("input[id^=adicionar-quantidade-")[key].value;
+        var valor_unitario = $("input[id^=adicionar-valor-")[key].value;
 
-        pedido['pedido.produto.id[' + key + ']'] = idItem;
-        pedido['pedido.produto.quantidade[' + key + ']'] = quantidadeItem;
+        pedido.pecas.push({
+            _id: idItem,
+            quantidade: quantidadeItem,
+            valor_unitario: valor_unitario
+        });
     });
 
-    pedido['pedido.qtd_itens'] = selects.length;
+    pedido.qtd_itens = selects.length;
 
     //imprime o json
-    alert(JSON.stringify(pedido));
+    //alert(JSON.stringify(pedido));
 
     jQuery.ajax({
         type: "POST",
-        url: "http://localhost:8080/restee/api/pedidos/",
-        mimeType: "multipart/form-data",
+        url: "http://localhost:3000/api/pedidos/",
         data: pedido,
         dataType: "json",
         success: function (data) {
-            if (data['Return'] != 0) {
-                alert(data['Exception']);
-            } else {
-                listarPedidos();
-                limparFormulario();
-                alert("Pedido cadastrado com sucesso.");
-            }
+            //listarPedidos();
+            limparFormulario();
+            alert("Pedido cadastrado com sucesso.");
         },
         error: function () {
-            alert('Exb exeption');
+            alert('Erro...');
         }
     });
 
@@ -255,7 +255,7 @@ function adicionarProduto(data) {
     var linha;
     //começando a linha, e adicionando o select. É um select por linha, a quantidade de options é que vai depender da quantidade de produtos.
     linha = "<tr id='" + idLinha + "'><td><div class='form-group'>" +
-        "<select id='select-id-" + idLinha + "' class='form-control' onchange='onChangeProduto(" + idLinha + ");'>";
+        "<select ng-model='pedido.pecas._id' id='select-id-" + idLinha + "' class='form-control' onchange='onChangeProduto(" + idLinha + ");'>";
 
     // para cada produto eu vou concatenar um option, observem o id do produto no id do option
     $.each(data, function (key, val) {
@@ -270,11 +270,11 @@ function adicionarProduto(data) {
         "<textarea id='adicionar-descricao-" + idLinha + "' disabled class='form-control'></textarea></div></td>" +
 
         "<td><div class='form-group'>" +
-        "<input type='text' id='adicionar-valor-" + idLinha + "' placeholder='Valor' disabled class='form-control'></div></td>" +
+        "<input type='text' ng-model='pedido.pecas.valor_unitario' id='adicionar-valor-" + idLinha + "' placeholder='Valor' disabled class='form-control'></div></td>" +
 
 
         "<td><div class='form-group'>" +
-        "<input type='number' id='adicionar-quantidade-" + idLinha + "' placeholder='Quantidade' class='form-control' onchange='onChangeQuantidade(" + idLinha + ");' min='1'></div></td>" +
+        "<input type='number' ng-model='pedido.pecas.quantidade' name='pedido.pecas.quantidade' required id='adicionar-quantidade-" + idLinha + "' placeholder='Quantidade' class='form-control' onchange='onChangeQuantidade(" + idLinha + ");' min='1'></div></td>" +
 
         "<td><div class='form-group'>" +
         "<input type='text' id='adicionar-total-" + idLinha + "' placeholder='Total' disabled class='form-control'></div></td>" +
@@ -332,20 +332,6 @@ function carregarProduto(idLinha, produto) {
 
 }
 
-/* function carregarQuantidade(idLinha){
-    var idProduto = $("select[id*='select-id-"+idLinha+"'] option:selected")[0].id;
-
-       jQuery.ajax({
-            type: "GET",
-            url: "http://localhost:8080/restee/api/produtos/"+idProduto,
-            mimeType: "multipart/form-data",
-            dataType: "json",
-            success: function (data) {
-                calcularLinha(idLinha, data['Content']);
-            }
-        });
-}
- */
 /*Método chamado quando é alterado o valor da quantidade, ele pega o produto, pega a quantidade que o usuário digitou e multiplica.
 Acho que como o capo de quantidade é um split (number), náo precisamos fazer a validação desse campo, mas, é bom testar.
 criei um if para saber se é Zero para remover a linha, AINDA NÃO FEITO, MAS, É PARA FAZER.

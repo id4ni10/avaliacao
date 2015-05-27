@@ -20,11 +20,24 @@ router.get('/:id', function (req, res) {
 
 router.post('/', function (req, res) {
 
+    var fpecas = [];
+    var count = req.body.qtd_itens;
+
+    for (var i = 0; i < count; i++) {
+        var peca = {
+            _id: req.body['pecas[' + i + '][_id]'],
+            quantidade: req.body['pecas[' + i + '][quantidade]'],
+            valor_unitario: req.body['pecas[' + i + '][valor_unitario]']
+        };
+
+        fpecas.push(peca);
+    }
+
     var pedido = new Pedido({
         nome: req.body.nome,
         email: req.body.email,
         endereco: req.body.endereco,
-        pecas: req.body.pecas,
+        pecas: fpecas,
         total: req.body.total
     });
 
